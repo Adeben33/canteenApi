@@ -1,6 +1,9 @@
 package routes
 
-import "github.com/gin-gonic/gin"
+import (
+	controller "canteenApi/controllers"
+	"github.com/gin-gonic/gin"
+)
 
 func TableRoutes(r *gin.Engine) {
 	r.GET("/tables", controller.GetTables())

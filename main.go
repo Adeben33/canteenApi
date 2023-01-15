@@ -1,11 +1,11 @@
 package main
 
 import (
-	"github.com/adeben33/CanteenApi/routes"
+	"canteenApi/routes"
 	"github.com/gin-gonic/gin"
+
 	"go.mongodb.org/mongo-driver/mongo"
 	"os"
-	"test-va/cmd/routes"
 )
 
 var foodCollection *mongo.Collection = database.OpenCollection(database.Client, "Food")
