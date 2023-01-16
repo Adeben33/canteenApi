@@ -3,12 +3,11 @@ package main
 import (
 	"canteenApi/routes"
 	"github.com/gin-gonic/gin"
-
 	"go.mongodb.org/mongo-driver/mongo"
 	"os"
 )
 
-var foodCollection *mongo.Collection = database.OpenCollection(database.Client, "Food")
+var foodCollection *mongo.Collection = db
 
 func main() {
 	port := os.Getenv("port")
