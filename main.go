@@ -1,13 +1,16 @@
 package main
 
 import (
+	"canteenApi/database"
 	"canteenApi/routes"
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/mongo"
 	"os"
 )
 
-var foodCollection *mongo.Collection = db
+var foodCollection *mongo.Collection = database.OpenCollection(database.Client, "Food")
+
+//database.OpenCollection(database.Client, "Food")
 
 func main() {
 	port := os.Getenv("port")
@@ -17,7 +20,7 @@ func main() {
 	router := gin.New()
 	router.Use(gin.Logger())
 	routes.UserRoutes(router)
-	router.Use(middleware.Authentication())
+	//router.Use(middleware.Authentication())
 	routes.FoodRoutes(router)
 	routes.MenuRoutes(router)
 	routes.TableRoutes(router)
