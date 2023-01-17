@@ -11,7 +11,7 @@ type OrderItem struct {
 	UnitPrice   float64            `json:"unitPrice" validate:"required"`
 	CreatedAt   time.Time          `json:"created_at"`
 	UpdatedAT   time.Time          `json:"updated_at"`
-	FoodId      string `json:"food_id" validate:"required"`
+	FoodId      string             `json:"food_id" validate:"required"`
 	OrderItemid string             `json:"order_itemid"`
-	OrderID     string             `json:"order_id"` validate:"required"
+	OrderID     string             `json:"order_id"validate:"required"`
 }

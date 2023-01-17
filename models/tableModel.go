@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-type table struct {
+type Table struct {
 	ID             primitive.ObjectID `bson:"_id"`
 	NumberOfGuests *int               `json:"number_of_guests" validate:"required"`
 	TableNumber    *int               `json:"table_number" validate:"required"`
