@@ -2,6 +2,7 @@ package main
 
 import (
 	"canteenApi/database"
+	"canteenApi/middleware"
 	"canteenApi/routes"
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -20,7 +21,7 @@ func main() {
 	router := gin.New()
 	router.Use(gin.Logger())
 	routes.UserRoutes(router)
-	//router.Use(middleware.Authentication())
+	router.Use(middleware.Authentication())
 	routes.FoodRoutes(router)
 	routes.MenuRoutes(router)
 	routes.TableRoutes(router)

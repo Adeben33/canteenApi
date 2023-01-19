@@ -58,7 +58,7 @@ func GetInvoice() gin.HandlerFunc {
 		}
 		var invoiceView invoiceViewFormat
 
-		allOrderItem, err := ItemsByOrder(invoice.InvoiceID)
+		allOrderItem, err := ItemByOrder(invoice.InvoiceID)
 		invoiceView.OrderId = invoice.InvoiceID
 		invoiceView.PaymentDueDate = invoice.PaymentDueDate
 

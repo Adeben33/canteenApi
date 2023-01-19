@@ -91,7 +91,7 @@ func UpdateMenu() gin.HandlerFunc {
 		filter := bson.M{"menuId": menuId}
 
 		var updateObj primitive.D
-		if menu.StartDate != nil && menu.EndDate != nil {
+		if !(menu.StartDate.IsZero() && menu.EndDate.IsZero()) {
 			if !inTimeSpan(menu.StartDate, menu.EndDate, time.Now()) {
 				msg := "Kindly retype the time"
 				c.JSON(http.StatusInternalServerError, gin.H{"error": msg})
@@ -108,7 +108,7 @@ func UpdateMenu() gin.HandlerFunc {
 				updateObj = append(updateObj, bson.E{"category", menu.Category})
 			}
 			menu.UpdatedAt, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC822Z))
-			updateObj = append(updatedObj, bson.E{"update_at", menu.UpdatedAt})
+			updateObj = append(updateObj, bson.E{"update_at", menu.UpdatedAt})
 			upsert := true
 			opt := options.UpdateOptions{
 				Upsert: &upsert,
